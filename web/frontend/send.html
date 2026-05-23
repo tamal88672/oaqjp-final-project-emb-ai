@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#8B1538" />
+  <title>Send a secret note</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="send-page">
+  <div class="send-card">
+    <div id="recipient" class="center" style="margin-bottom: 18px;">
+      <div class="avatar-large" id="recipient-avatar">?</div>
+      <h2 id="recipient-name">…</h2>
+      <p class="muted" id="recipient-bio"></p>
+    </div>
+
+    <form id="send-form">
+      <div class="form-group">
+        <label for="send-body">Your secret note</label>
+        <textarea id="send-body" maxlength="500" required placeholder="Say something kind. Stay anonymous."></textarea>
+        <div class="row">
+          <small class="muted">No name. No trace.</small>
+          <span class="spacer"></span>
+          <small class="muted"><span id="char-count">0</span>/500</small>
+        </div>
+      </div>
+      <button class="btn" type="submit" id="send-btn">Send anonymously</button>
+      <div class="error" id="send-error" hidden></div>
+      <div class="success" id="send-success" hidden></div>
+    </form>
+
+    <p class="muted center" style="margin-top: 18px; font-size: 0.85rem;">
+      Want your own link? <a href="index.html">Create an account</a>.
+    </p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/send.js"></script>
+</body>
+</html>

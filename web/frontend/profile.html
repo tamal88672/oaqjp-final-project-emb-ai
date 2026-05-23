@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1A0B1F" />
+  <title>Profile — Secret Admirer</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="brand">
+      <span class="brand-mark">SA</span>
+      <span>Secret Admirer</span>
+    </div>
+
+    <div class="card">
+      <div class="avatar-large" id="avatar-large">?</div>
+      <div class="center" style="margin-bottom: 16px;">
+        <label for="avatar-input" class="btn btn-ghost" style="display:inline-block; width:auto; padding: 8px 16px;">Change photo</label>
+        <input type="file" id="avatar-input" accept="image/*" hidden />
+      </div>
+
+      <form id="profile-form">
+        <div class="form-group">
+          <label>Handle</label>
+          <input type="text" id="profile-handle" disabled />
+          <small class="muted">Your handle is permanent and forms your share URL.</small>
+        </div>
+        <div class="form-group">
+          <label for="profile-display-name">Display name</label>
+          <input type="text" id="profile-display-name" maxlength="80" />
+        </div>
+        <div class="form-group">
+          <label for="profile-bio">Bio</label>
+          <textarea id="profile-bio" maxlength="280" placeholder="A line about you that helps your admirers know who they're writing to."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="profile-theme">Theme</label>
+          <select id="profile-theme">
+            <option value="velvet">Velvet (default)</option>
+            <option value="midnight">Midnight</option>
+            <option value="rose">Rose</option>
+            <option value="champagne">Champagne</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="row" style="text-transform:none">
+            <input type="checkbox" id="profile-allow-replies" style="width:auto; margin-right:8px;" />
+            Accept new messages
+          </label>
+        </div>
+        <button class="btn" type="submit">Save profile</button>
+        <div class="success" id="profile-success" hidden>Saved.</div>
+        <div class="error" id="profile-error" hidden></div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Active sessions</h3>
+      <p class="muted" style="font-size:0.9rem; margin-bottom:12px">Each signed-in device gets a session you can revoke from here.</p>
+      <div id="sessions-list"><div class="muted">loading…</div></div>
+    </div>
+
+    <div class="card">
+      <h3>Danger zone</h3>
+      <button class="btn btn-danger" id="logout-everywhere">Sign out everywhere</button>
+    </div>
+  </div>
+
+  <nav class="footer">
+    <a href="inbox.html">Inbox</a>
+    <a href="profile.html" class="active">Profile</a>
+    <a href="#" id="logout">Sign out</a>
+  </nav>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

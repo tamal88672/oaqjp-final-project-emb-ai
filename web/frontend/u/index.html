@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <script>
+    // /u/{handle} → /send.html?u={handle}. We can't rewrite without a server,
+    // but this thin redirect keeps share links clean (the gateway should
+    // strip the .html in production).
+    const m = location.pathname.match(/\/u\/([a-z0-9_]{3,30})/i);
+    location.replace('../send.html' + (m ? '?u=' + encodeURIComponent(m[1]) : ''));
+  </script>
+</head>
+<body></body>
+</html>

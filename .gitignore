@@ -127,3 +127,27 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# .NET / C#
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Xcode / Swift
+xcuserdata/
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+.swiftpm/
+Pods/
+
+# Node / frontend tooling
+node_modules/
+
+# Editor
+.idea/
+.vscode/
+*.swp
+.DS_Store
