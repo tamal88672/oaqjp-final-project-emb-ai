@@ -1,0 +1,59 @@
+name: CameraTether
+options:
+  bundleIdPrefix: com.cameratether
+  deploymentTarget:
+    iOS: "15.0"
+  xcodeVersion: "15.0"
+  groupSortPosition: top
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    PRODUCT_BUNDLE_IDENTIFIER: com.cameratether.app
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_BITCODE: NO
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+  configs:
+    Release:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: ""
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+
+targets:
+  CameraTether:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: CameraTether
+    info:
+      path: CameraTether/Resources/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.cameratether.app
+        INFOPLIST_FILE: CameraTether/Resources/Info.plist
+    dependencies:
+      - sdk: CoreImage.framework
+      - sdk: Vision.framework
+      - sdk: Photos.framework
+      - sdk: Network.framework
+      - sdk: ExternalAccessory.framework
+      - sdk: AVFoundation.framework
+      - sdk: Metal.framework
+      - sdk: MetalKit.framework
+      - sdk: Accelerate.framework
+
+  CameraTetherTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: CameraTetherTests
+    dependencies:
+      - target: CameraTether
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.cameratether.tests
