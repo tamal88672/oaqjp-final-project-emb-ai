@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharatiya Handicrafts — Project Documentation</title>
+    <style>
+        :root {
+            --amber-50: #fffbeb;
+            --amber-100: #fef3c7;
+            --amber-200: #fde68a;
+            --amber-400: #fbbf24;
+            --amber-500: #f59e0b;
+            --amber-600: #d97706;
+            --amber-700: #b45309;
+            --amber-800: #92400e;
+            --amber-900: #78350f;
+            --brown-800: #5c3317;
+            --brown-900: #3e1f0d;
+            --cream: #faf8f5;
+            --green-100: #dcfce7;
+            --green-700: #15803d;
+            --red-100: #fee2e2;
+            --red-700: #b91c1c;
+            --blue-100: #dbeafe;
+            --blue-700: #1d4ed8;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--cream);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, var(--brown-900) 0%, var(--amber-800) 50%, var(--amber-600) 100%);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+        .hero-icon { font-size: 56px; margin-bottom: 16px; }
+        .hero h1 { font-size: 42px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .hero .tagline { font-size: 20px; opacity: 0.9; font-weight: 300; margin-bottom: 24px; }
+        .hero .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .hero .badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* ── Container ── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── Section ── */
+        .section { padding: 56px 0; }
+        .section:nth-child(even) { background: white; }
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--brown-900);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .icon { font-size: 28px; }
+        .section-subtitle {
+            color: var(--gray-500);
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        /* ── Business Needs Cards ── */
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .need-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .need-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .need-card .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .need-card h3 { font-size: 18px; font-weight: 600; color: var(--gray-900); margin-bottom: 8px; }
+        .need-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+        .bg-amber { background: var(--amber-100); }
+        .bg-green { background: var(--green-100); }
+        .bg-blue { background: var(--blue-100); }
+        .bg-red { background: var(--red-100); }
+
+        /* ── Feature List ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 12px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+        }
+        .feature-item .check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--green-100);
+            color: var(--green-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .feature-item strong { display: block; font-size: 14px; color: var(--gray-800); }
+        .feature-item span { font-size: 13px; color: var(--gray-500); }
+
+        /* ── Tech Stack ── */
+        .stack-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .stack-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gray-500);
+            min-width: 100px;
+            padding-top: 8px;
+        }
+        .stack-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+        .chip {
+            background: white;
+            border: 1px solid var(--gray-200);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+        .chip.primary { background: var(--amber-50); border-color: var(--amber-200); color: var(--amber-800); }
+
+        /* ── File Tree ── */
+        .file-tree {
+            background: var(--gray-900);
+            color: #e5e7eb;
+            padding: 28px;
+            border-radius: 16px;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 13px;
+            line-height: 1.9;
+            overflow-x: auto;
+        }
+        .file-tree .dir { color: var(--amber-400); font-weight: 600; }
+        .file-tree .file { color: #93c5fd; }
+        .file-tree .comment { color: var(--gray-500); font-style: italic; }
+
+        /* ── API Table ── */
+        .api-group { margin-bottom: 28px; }
+        .api-group-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--amber-800);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--amber-100);
+        }
+        .api-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .api-table th {
+            text-align: left;
+            padding: 10px 12px;
+            background: var(--gray-50);
+            color: var(--gray-600);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .api-table td { padding: 10px 12px; border-top: 1px solid var(--gray-100); }
+        .method {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: monospace;
+            min-width: 50px;
+            text-align: center;
+        }
+        .method.get { background: #dbeafe; color: #1d4ed8; }
+        .method.post { background: #dcfce7; color: #15803d; }
+        .method.put { background: #fef3c7; color: #b45309; }
+        .method.delete { background: #fee2e2; color: #b91c1c; }
+        .endpoint { font-family: monospace; color: var(--gray-700); font-size: 13px; }
+
+        /* ── DB Schema ── */
+        .schema-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .schema-card-header {
+            background: var(--gray-50);
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--amber-800);
+            border-bottom: 1px solid var(--gray-200);
+            font-family: monospace;
+        }
+        .schema-card-body { padding: 16px 20px; }
+        .schema-card-body .col {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 13px;
+            border-bottom: 1px solid var(--gray-50);
+        }
+        .schema-card-body .col:last-child { border-bottom: none; }
+        .col-name { font-family: monospace; font-weight: 500; color: var(--gray-800); }
+        .col-type { font-family: monospace; color: var(--gray-500); font-size: 12px; }
+        .col-tag {
+            font-size: 10px;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .col-tag.pk { background: var(--amber-100); color: var(--amber-800); }
+        .col-tag.fk { background: var(--blue-100); color: var(--blue-700); }
+
+        /* ── Quick Start ── */
+        .quickstart-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        .step {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--amber-500);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .step h4 { font-size: 15px; color: var(--gray-800); margin-bottom: 8px; }
+        .step code {
+            display: block;
+            background: var(--gray-900);
+            color: #e5e7eb;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 8px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        /* ── Pages Overview ── */
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .page-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .page-card .page-icon { font-size: 28px; margin-bottom: 8px; }
+        .page-card h4 { font-size: 15px; font-weight: 600; color: var(--gray-800); margin-bottom: 4px; }
+        .page-card .route { font-family: monospace; font-size: 12px; color: var(--amber-700); margin-bottom: 8px; }
+        .page-card p { font-size: 13px; color: var(--gray-500); line-height: 1.5; }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-300);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer strong { color: var(--amber-400); }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 28px; }
+            .hero .tagline { font-size: 16px; }
+            .section { padding: 36px 0; }
+            .section-title { font-size: 22px; }
+            .needs-grid, .feature-grid, .quickstart-steps, .pages-grid {
+                grid-template-columns: 1fr;
+            }
+            .stack-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-icon">🏺</div>
+        <h1>Bharatiya Handicrafts</h1>
+        <p class="tagline">Trade Management Platform &mdash; Crafted with Care</p>
+        <p style="opacity:0.8; margin-bottom:24px; font-size:15px;">
+            A complete web application for managing Indian handicraft exports to the US market.<br>
+            Product catalog, inventory tracking, supplier management &amp; business reporting.
+        </p>
+        <div class="badges">
+            <span class="badge">React 19</span>
+            <span class="badge">Express.js</span>
+            <span class="badge">SQLite</span>
+            <span class="badge">Tailwind CSS</span>
+            <span class="badge">REST API</span>
+        </div>
+    </div>
+</header>
+
+<!-- ════════════════════════ BUSINESS NEEDS ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">💼</span> Business Needs Solved</div>
+        <p class="section-subtitle">This platform addresses every stage of the India-to-US handicraft trade pipeline.</p>
+        <div class="needs-grid">
+            <div class="need-card">
+                <div class="card-icon bg-amber">🛍️</div>
+                <h3>Product Showcase for Suppliers</h3>
+                <p>Present your full handicraft catalog to Indian suppliers and artisans. High-quality images, detailed descriptions, and organized categories make it easy to say <em>"these are my products."</em> Suppliers can see exactly what you're trading.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon bg-green">📦</div>
+                <h3>Inventory &amp; Stock Control</h3>
+                <p>Track stock levels in real time. Get <strong>low-stock alerts</strong> before you run out. Every quantity change is logged with timestamps so you always know what moved and when &mdash; critical for export planning.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon bg-blue">🏷️</div>
+                <h3>Dual Currency Pricing</h3>
+                <p>Manage both <strong>INR cost price</strong> (what you pay artisans in India) and <strong>USD selling price</strong> (what US buyers pay). See margins at a glance. Essential for cross-border trade profitability.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon bg-red">📊</div>
+                <h3>Business Reports &amp; Activity Logs</h3>
+                <p>Full audit trail of every product added, stock adjusted, and change made. Date-filtered activity logs, category-wise breakdowns, and dashboard summaries give you a bird's-eye view of your business.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon bg-amber">🤝</div>
+                <h3>Supplier &amp; Artisan Directory</h3>
+                <p>Maintain a searchable directory of all your artisan contacts across India &mdash; with specialization, location, and contact details. Build and manage your supply network from one place.</p>
+            </div>
+            <div class="need-card">
+                <div class="card-icon bg-green">📖</div>
+                <h3>Artisan Stories &amp; Provenance</h3>
+                <p>Capture each product's <strong>origin state</strong>, artisan name, and their story. US buyers value authenticity and craftsmanship heritage &mdash; this feature helps you market products with a compelling narrative.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ FEATURES ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">✨</span> Key Features</div>
+        <p class="section-subtitle">Everything you need to run your handicraft export business from one dashboard.</p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>8 Pre-loaded Categories</strong><span>Jute, Terracotta, Brass, Textiles, Wood, Bamboo, Leather, Embroidery</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Auto-generated SKU Codes</strong><span>Format: HC-JUT-4829 &mdash; professional product identification</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Image Upload</strong><span>Drag-and-drop product photos, supports JPEG, PNG, WebP up to 5MB</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Smart Search &amp; Filters</strong><span>Find products by name, SKU, category, price range, or status</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Low-Stock Alerts</strong><span>Automatic warnings when stock falls below minimum levels</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Activity Audit Trail</strong><span>Every stock change logged with who, what, when, and why</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Indian States Directory</strong><span>All 28 states + 8 UTs for tracking product origins</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Dashboard Analytics</strong><span>Total value, category breakdowns, recent activity at a glance</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Grid &amp; List Views</strong><span>Toggle between visual grid cards and compact list display</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Responsive Design</strong><span>Works on desktop, tablet, and mobile devices</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Inline Stock Adjustment</strong><span>Quick +/- buttons to adjust inventory without leaving the page</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check">✓</div>
+                <div><strong>Status Tracking</strong><span>Products marked as Available, Out of Stock, or Coming Soon</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ PAGES OVERVIEW ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">📱</span> Application Pages</div>
+        <p class="section-subtitle">11 routes powering every aspect of your trade operations.</p>
+        <div class="pages-grid">
+            <div class="page-card">
+                <div class="page-icon">📊</div>
+                <h4>Dashboard</h4>
+                <div class="route">/</div>
+                <p>Business overview: total products, inventory value, stock alerts, category breakdown chart, recent activity feed.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">🛍️</div>
+                <h4>Product Catalog</h4>
+                <div class="route">/products</div>
+                <p>Browse all products in grid or list view. Search, filter by category/status/price, sort by date or price.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">🔍</div>
+                <h4>Product Detail</h4>
+                <div class="route">/products/:id</div>
+                <p>Full product view with image, pricing, artisan info, origin, and inline stock adjustment controls.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">➕</div>
+                <h4>Add/Edit Product</h4>
+                <div class="route">/products/new</div>
+                <p>Form with image upload, dual pricing, category selection, artisan story, and Indian state of origin.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">📂</div>
+                <h4>Categories</h4>
+                <div class="route">/categories</div>
+                <p>Manage product categories with images, descriptions, and product counts. Inline create/edit/delete.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">📦</div>
+                <h4>Inventory</h4>
+                <div class="route">/inventory</div>
+                <p>Stock table with quantities, min levels, status badges (OK/Low/Out), quick adjust buttons, and filters.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">📈</div>
+                <h4>Reports</h4>
+                <div class="route">/reports</div>
+                <p>Activity log with date range filters, summary stats, and category breakdown with visual bar charts.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">🤝</div>
+                <h4>Suppliers</h4>
+                <div class="route">/suppliers</div>
+                <p>Directory of artisan contacts with search by name, city, specialization. Card view with contact info.</p>
+            </div>
+            <div class="page-card">
+                <div class="page-icon">✏️</div>
+                <h4>Add/Edit Supplier</h4>
+                <div class="route">/suppliers/new</div>
+                <p>Form for supplier details: name, contact person, phone, email, address, state, specialization, notes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ TECH STACK ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">⚙️</span> Technology Stack</div>
+        <p class="section-subtitle">Modern, production-ready tools chosen for reliability and ease of deployment.</p>
+
+        <div class="stack-row">
+            <div class="stack-label">Frontend</div>
+            <div class="stack-chips">
+                <span class="chip primary">React 19</span>
+                <span class="chip primary">Vite 6</span>
+                <span class="chip primary">Tailwind CSS 4</span>
+                <span class="chip">React Router 7</span>
+                <span class="chip">Axios</span>
+                <span class="chip">Lucide Icons</span>
+            </div>
+        </div>
+        <div class="stack-row">
+            <div class="stack-label">Backend</div>
+            <div class="stack-chips">
+                <span class="chip primary">Express.js 4</span>
+                <span class="chip primary">SQLite 3</span>
+                <span class="chip">better-sqlite3</span>
+                <span class="chip">Multer</span>
+                <span class="chip">UUID v4</span>
+                <span class="chip">CORS</span>
+            </div>
+        </div>
+        <div class="stack-row">
+            <div class="stack-label">Dev Tools</div>
+            <div class="stack-chips">
+                <span class="chip">Node.js 22</span>
+                <span class="chip">Concurrently</span>
+                <span class="chip">ESLint</span>
+                <span class="chip">Hot Module Reload</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 24px; padding: 20px; background: var(--amber-50); border: 1px solid var(--amber-200); border-radius: 12px;">
+            <strong style="color: var(--amber-800);">Why SQLite?</strong>
+            <p style="font-size: 14px; color: var(--gray-600); margin-top: 4px;">
+                Zero configuration, no separate database server to install, portable single-file storage. Perfect for starting out.
+                When the business grows, the same SQL queries work with PostgreSQL or MySQL with minimal changes.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ CODE STRUCTURE ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">🗂️</span> Code Structure</div>
+        <p class="section-subtitle">Clean separation of frontend and backend with a shared root.</p>
+
+        <div class="file-tree">
+<span class="dir">bharatiya-handicrafts/</span>
+├── <span class="file">package.json</span>              <span class="comment"># Root scripts: dev, server, client, build</span>
+├── <span class="file">.gitignore</span>
+│
+├── <span class="dir">server/</span>                    <span class="comment"># ── Backend (Express.js API) ──</span>
+│   ├── <span class="file">index.js</span>              <span class="comment"># Express app, port 5000, middleware, route mounts</span>
+│   ├── <span class="file">database.js</span>           <span class="comment"># SQLite init, table creation, category seeding</span>
+│   ├── <span class="dir">data/</span>
+│   │   └── <span class="file">handicraft.db</span>     <span class="comment"># SQLite database file (auto-created)</span>
+│   ├── <span class="dir">uploads/</span>               <span class="comment"># Product &amp; category images (user uploads)</span>
+│   └── <span class="dir">routes/</span>
+│       ├── <span class="file">categories.js</span>     <span class="comment"># CRUD + image upload + product count</span>
+│       ├── <span class="file">products.js</span>       <span class="comment"># CRUD + filters + auto-SKU + image upload</span>
+│       ├── <span class="file">inventory.js</span>      <span class="comment"># Stock management + alerts + activity logging</span>
+│       ├── <span class="file">reports.js</span>        <span class="comment"># Dashboard summary, activity log, breakdowns</span>
+│       └── <span class="file">suppliers.js</span>      <span class="comment"># Supplier/artisan directory CRUD</span>
+│
+└── <span class="dir">client/</span>                    <span class="comment"># ── Frontend (React + Vite) ──</span>
+    ├── <span class="file">package.json</span>
+    ├── <span class="file">vite.config.js</span>        <span class="comment"># Tailwind plugin, API proxy to :5000</span>
+    ├── <span class="file">index.html</span>
+    └── <span class="dir">src/</span>
+        ├── <span class="file">main.jsx</span>          <span class="comment"># React entry point</span>
+        ├── <span class="file">App.jsx</span>           <span class="comment"># Router with 11 routes</span>
+        ├── <span class="file">index.css</span>         <span class="comment"># Tailwind imports + base styles</span>
+        ├── <span class="dir">utils/</span>
+        │   └── <span class="file">api.js</span>        <span class="comment"># Axios API client with all endpoint helpers</span>
+        ├── <span class="dir">components/</span>
+        │   ├── <span class="file">Layout.jsx</span>    <span class="comment"># Sidebar nav, branding, responsive shell</span>
+        │   ├── <span class="file">StatsCard.jsx</span> <span class="comment"># Reusable dashboard metric card</span>
+        │   ├── <span class="file">Modal.jsx</span>     <span class="comment"># Confirmation &amp; form dialog</span>
+        │   └── <span class="file">ImageUpload.jsx</span><span class="comment"># Drag-and-drop with preview</span>
+        └── <span class="dir">pages/</span>
+            ├── <span class="file">Dashboard.jsx</span>     <span class="comment"># Overview with stats, charts, activity</span>
+            ├── <span class="file">ProductList.jsx</span>   <span class="comment"># Catalog with grid/list, search, filters</span>
+            ├── <span class="file">ProductDetail.jsx</span> <span class="comment"># Full product view + stock adjustment</span>
+            ├── <span class="file">ProductForm.jsx</span>   <span class="comment"># Create/edit product form</span>
+            ├── <span class="file">CategoryList.jsx</span>  <span class="comment"># Category grid with inline CRUD</span>
+            ├── <span class="file">InventoryPage.jsx</span> <span class="comment"># Stock table with alerts &amp; adjustments</span>
+            ├── <span class="file">ReportsPage.jsx</span>   <span class="comment"># Logs, date filters, category breakdown</span>
+            ├── <span class="file">SupplierList.jsx</span>  <span class="comment"># Supplier directory with search</span>
+            └── <span class="file">SupplierForm.jsx</span>  <span class="comment"># Create/edit supplier form</span>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ DATABASE SCHEMA ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">🗄️</span> Database Schema</div>
+        <p class="section-subtitle">5 tables with proper foreign keys, constraints, and audit logging.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px;">
+            <div class="schema-card">
+                <div class="schema-card-header">categories</div>
+                <div class="schema-card-body">
+                    <div class="col"><span class="col-name">id <span class="col-tag pk">PK</span></span><span class="col-type">TEXT (UUID)</span></div>
+                    <div class="col"><span class="col-name">name</span><span class="col-type">TEXT NOT NULL UNIQUE</span></div>
+                    <div class="col"><span class="col-name">description</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">image_url</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">created_at</span><span class="col-type">DATETIME</span></div>
+                    <div class="col"><span class="col-name">updated_at</span><span class="col-type">DATETIME</span></div>
+                </div>
+            </div>
+
+            <div class="schema-card">
+                <div class="schema-card-header">products</div>
+                <div class="schema-card-body">
+                    <div class="col"><span class="col-name">id <span class="col-tag pk">PK</span></span><span class="col-type">TEXT (UUID)</span></div>
+                    <div class="col"><span class="col-name">name</span><span class="col-type">TEXT NOT NULL</span></div>
+                    <div class="col"><span class="col-name">description</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">category_id <span class="col-tag fk">FK</span></span><span class="col-type">TEXT &rarr; categories</span></div>
+                    <div class="col"><span class="col-name">price_inr</span><span class="col-type">REAL (cost price)</span></div>
+                    <div class="col"><span class="col-name">price_usd</span><span class="col-type">REAL (selling price)</span></div>
+                    <div class="col"><span class="col-name">image_url</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">origin_state</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">artisan_name</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">artisan_story</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">sku</span><span class="col-type">TEXT UNIQUE</span></div>
+                    <div class="col"><span class="col-name">status</span><span class="col-type">CHECK (available | out_of_stock | coming_soon)</span></div>
+                    <div class="col"><span class="col-name">created_at / updated_at</span><span class="col-type">DATETIME</span></div>
+                </div>
+            </div>
+
+            <div class="schema-card">
+                <div class="schema-card-header">inventory</div>
+                <div class="schema-card-body">
+                    <div class="col"><span class="col-name">id <span class="col-tag pk">PK</span></span><span class="col-type">TEXT (UUID)</span></div>
+                    <div class="col"><span class="col-name">product_id <span class="col-tag fk">FK</span></span><span class="col-type">TEXT UNIQUE &rarr; products</span></div>
+                    <div class="col"><span class="col-name">quantity</span><span class="col-type">INTEGER DEFAULT 0</span></div>
+                    <div class="col"><span class="col-name">min_stock_level</span><span class="col-type">INTEGER DEFAULT 5</span></div>
+                    <div class="col"><span class="col-name">warehouse_location</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">updated_at</span><span class="col-type">DATETIME</span></div>
+                </div>
+            </div>
+
+            <div class="schema-card">
+                <div class="schema-card-header">inventory_log</div>
+                <div class="schema-card-body">
+                    <div class="col"><span class="col-name">id <span class="col-tag pk">PK</span></span><span class="col-type">TEXT (UUID)</span></div>
+                    <div class="col"><span class="col-name">product_id <span class="col-tag fk">FK</span></span><span class="col-type">TEXT &rarr; products</span></div>
+                    <div class="col"><span class="col-name">change_type</span><span class="col-type">CHECK (added | removed | adjusted | initial)</span></div>
+                    <div class="col"><span class="col-name">quantity_change</span><span class="col-type">INTEGER</span></div>
+                    <div class="col"><span class="col-name">previous_quantity</span><span class="col-type">INTEGER</span></div>
+                    <div class="col"><span class="col-name">new_quantity</span><span class="col-type">INTEGER</span></div>
+                    <div class="col"><span class="col-name">notes</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">created_at</span><span class="col-type">DATETIME</span></div>
+                </div>
+            </div>
+
+            <div class="schema-card">
+                <div class="schema-card-header">suppliers</div>
+                <div class="schema-card-body">
+                    <div class="col"><span class="col-name">id <span class="col-tag pk">PK</span></span><span class="col-type">TEXT (UUID)</span></div>
+                    <div class="col"><span class="col-name">name</span><span class="col-type">TEXT NOT NULL</span></div>
+                    <div class="col"><span class="col-name">contact_person</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">email / phone</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">address / city / state</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">country</span><span class="col-type">TEXT DEFAULT 'India'</span></div>
+                    <div class="col"><span class="col-name">specialization</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">notes</span><span class="col-type">TEXT</span></div>
+                    <div class="col"><span class="col-name">created_at / updated_at</span><span class="col-type">DATETIME</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ API REFERENCE ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">🔌</span> API Reference</div>
+        <p class="section-subtitle">26 REST API endpoints powering the application.</p>
+
+        <div class="api-group">
+            <div class="api-group-title">Categories &mdash; /api/categories</div>
+            <table class="api-table">
+                <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/categories</td><td>List all categories with product count</td></tr>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/categories/:id</td><td>Single category with its products</td></tr>
+                    <tr><td><span class="method post">POST</span></td><td class="endpoint">/api/categories</td><td>Create category (multipart image upload)</td></tr>
+                    <tr><td><span class="method put">PUT</span></td><td class="endpoint">/api/categories/:id</td><td>Update category</td></tr>
+                    <tr><td><span class="method delete">DEL</span></td><td class="endpoint">/api/categories/:id</td><td>Delete (blocked if products exist)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="api-group">
+            <div class="api-group-title">Products &mdash; /api/products</div>
+            <table class="api-table">
+                <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/products?category_id=&amp;status=&amp;search=&amp;sort=&amp;min_price=&amp;max_price=</td><td>List with filters &amp; sorting</td></tr>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/products/:id</td><td>Full product details + inventory</td></tr>
+                    <tr><td><span class="method post">POST</span></td><td class="endpoint">/api/products</td><td>Create with auto-SKU &amp; inventory init</td></tr>
+                    <tr><td><span class="method put">PUT</span></td><td class="endpoint">/api/products/:id</td><td>Update product details</td></tr>
+                    <tr><td><span class="method delete">DEL</span></td><td class="endpoint">/api/products/:id</td><td>Delete product + inventory + logs</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="api-group">
+            <div class="api-group-title">Inventory &mdash; /api/inventory</div>
+            <table class="api-table">
+                <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/inventory</td><td>All stock levels with status (ok/low/out)</td></tr>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/inventory/alerts</td><td>Low &amp; out-of-stock items only</td></tr>
+                    <tr><td><span class="method put">PUT</span></td><td class="endpoint">/api/inventory/:productId</td><td>Update quantity &amp; auto-log change</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="api-group">
+            <div class="api-group-title">Reports &mdash; /api/reports</div>
+            <table class="api-table">
+                <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/reports/summary</td><td>Dashboard stats: totals, value, alerts</td></tr>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/reports/activity?from=&amp;to=&amp;product_id=</td><td>Activity log with date filters (max 100)</td></tr>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/reports/category-breakdown</td><td>Products &amp; total value per category</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="api-group">
+            <div class="api-group-title">Suppliers &mdash; /api/suppliers</div>
+            <table class="api-table">
+                <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/suppliers?search=</td><td>List with search across all fields</td></tr>
+                    <tr><td><span class="method get">GET</span></td><td class="endpoint">/api/suppliers/:id</td><td>Single supplier details</td></tr>
+                    <tr><td><span class="method post">POST</span></td><td class="endpoint">/api/suppliers</td><td>Create supplier</td></tr>
+                    <tr><td><span class="method put">PUT</span></td><td class="endpoint">/api/suppliers/:id</td><td>Update supplier</td></tr>
+                    <tr><td><span class="method delete">DEL</span></td><td class="endpoint">/api/suppliers/:id</td><td>Delete supplier</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ QUICK START ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">🚀</span> Quick Start</div>
+        <p class="section-subtitle">Get the app running in under 2 minutes.</p>
+
+        <div class="quickstart-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Install Dependencies</h4>
+                <p style="font-size: 14px; color: var(--gray-500);">Install both server and client packages.</p>
+                <code>npm install<br>cd client &amp;&amp; npm install</code>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Start Development Server</h4>
+                <p style="font-size: 14px; color: var(--gray-500);">Runs both backend (port 5000) and frontend (port 5173) concurrently.</p>
+                <code>npm run dev</code>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Open in Browser</h4>
+                <p style="font-size: 14px; color: var(--gray-500);">Visit the app and start adding your products!</p>
+                <code>http://localhost:5173</code>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Production Build</h4>
+                <p style="font-size: 14px; color: var(--gray-500);">Build the frontend and serve everything from Express.</p>
+                <code>npm run build<br>npm run server</code>
+            </div>
+        </div>
+
+        <div style="margin-top: 32px; padding: 20px; background: var(--green-100); border-radius: 12px; border: 1px solid #bbf7d0;">
+            <strong style="color: var(--green-700);">Prerequisites:</strong>
+            <span style="font-size: 14px; color: var(--gray-600);">Node.js 18+ and npm installed on your machine. No database server needed &mdash; SQLite runs embedded.</span>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ FUTURE ROADMAP ════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title"><span class="icon">🗺️</span> Future Roadmap</div>
+        <p class="section-subtitle">Planned features for upcoming releases.</p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="check" style="background: var(--amber-100); color: var(--amber-700);">→</div>
+                <div><strong>User Authentication</strong><span>Login system with role-based access (Admin, Warehouse, Sales)</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check" style="background: var(--amber-100); color: var(--amber-700);">→</div>
+                <div><strong>Order Management</strong><span>Track orders from US buyers, fulfillment status, shipping</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check" style="background: var(--amber-100); color: var(--amber-700);">→</div>
+                <div><strong>Export Documentation</strong><span>Generate invoices, packing lists, customs declarations</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check" style="background: var(--amber-100); color: var(--amber-700);">→</div>
+                <div><strong>Currency Conversion</strong><span>Live INR-to-USD rates for automatic price calculations</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check" style="background: var(--amber-100); color: var(--amber-700);">→</div>
+                <div><strong>Public Storefront</strong><span>Customer-facing catalog page for US buyers to browse products</span></div>
+            </div>
+            <div class="feature-item">
+                <div class="check" style="background: var(--amber-100); color: var(--amber-700);">→</div>
+                <div><strong>Shipping Integration</strong><span>Calculate shipping costs and track international shipments</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer class="footer">
+    <p><strong>Bharatiya Handicrafts</strong> &mdash; Trade Management Platform</p>
+    <p style="margin-top: 8px; opacity: 0.6;">Bridging Indian artisans with the world. Built with care. 🇮🇳</p>
+</footer>
+
+</body>
+</html>
