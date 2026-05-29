@@ -127,7 +127,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-server/data/*.db
+# Node
 node_modules/
-server/uploads/*
-!server/uploads/.gitkeep
+dist/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Uploaded files
+**/uploads/*
+!**/uploads/.gitkeep
