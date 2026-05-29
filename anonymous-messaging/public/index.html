@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhisperWall — Speak freely. Stay anonymous.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤫</text></svg>" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h1>WhisperWall</h1>
+        <p class="tagline">Speak freely. Stay anonymous.</p>
+      </div>
+
+      <button class="new-room-btn" id="newRoomBtn">+ New Room</button>
+
+      <form class="new-room-form hidden" id="newRoomForm">
+        <input type="text" id="roomName" placeholder="Room name" maxlength="60" required />
+        <input type="text" id="roomDesc" placeholder="Description (optional)" maxlength="200" />
+        <div class="new-room-actions">
+          <button type="submit" class="primary">Create</button>
+          <button type="button" class="ghost" id="cancelRoomBtn">Cancel</button>
+        </div>
+        <p class="form-error" id="roomError"></p>
+      </form>
+
+      <nav class="room-list" id="roomList"></nav>
+    </aside>
+
+    <main class="main">
+      <header class="room-header">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle rooms">☰</button>
+        <div class="room-header-text">
+          <h2 id="activeRoomName">Select a room</h2>
+          <p id="activeRoomDesc"></p>
+        </div>
+      </header>
+
+      <section class="messages" id="messages">
+        <p class="empty-state">Pick a room from the sidebar to start whispering.</p>
+      </section>
+
+      <footer class="composer">
+        <div class="composer-inner">
+          <textarea
+            id="composerInput"
+            placeholder="Whisper something… you'll stay anonymous"
+            maxlength="1000"
+            rows="1"
+            disabled
+          ></textarea>
+          <div class="composer-side">
+            <span class="char-counter" id="charCounter">0 / 1000</span>
+            <button id="sendBtn" class="send-btn" disabled>Send</button>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

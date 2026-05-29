@@ -1,0 +1,16 @@
+{
+  "name": "anonymous-messaging",
+  "version": "1.0.0",
+  "description": "WhisperWall — an anonymous public message board with multiple rooms.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.21.0",
+    "uuid": "^10.0.0"
+  }
+}
